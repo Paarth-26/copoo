@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>CO-PO Mapping Form</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="co">Select CO:</label>
+    <select name="co" id="co">
+        {% for co in cos %}
+        <option value="{{ co.id }}">{{ co.code }} - {{ co.description }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="po">Select PO:</label>
+    <select name="po" id="po">
+        {% for po in pos %}
+        <option value="{{ po.id }}">{{ po.code }} - {{ po.description }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <button type="submit">Generate Justification</button>
+</form>
+{% endblock %}
